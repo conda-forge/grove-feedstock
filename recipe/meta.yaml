@@ -1,7 +1,7 @@
 {% set name = "grove" %}
 {% set pip_name = "quantum-grove" %}
-{% set version = "1.6.0" %}
-{% set sha256 = "2a43aaabafc64563797062d1eb59ffabfb835d3a6edcae2bc8571d9031d273bb" %}
+{% set version = "1.7.0" %}
+{% set sha256 = "a563efa7471abb932a1e9e4ab9f01aaa2b3136cda5854e0be3af35f334b88d7e" %}
 
 package:
   name: {{ name|lower }}
