@@ -18,9 +18,7 @@ build:
 
 requirements:
   host:
-    - numpy
     - pip
-    - pytest-runner
     - python >=3.6
   run:
     - funcsigs
