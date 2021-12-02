@@ -1,40 +1,41 @@
 {% set name = "grove" %}
 {% set pip_name = "quantum-grove" %}
 {% set version = "1.7.0" %}
-{% set sha256 = "a563efa7471abb932a1e9e4ab9f01aaa2b3136cda5854e0be3af35f334b88d7e" %}
+
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ pip_name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ pip_name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: a563efa7471abb932a1e9e4ab9f01aaa2b3136cda5854e0be3af35f334b88d7e
 
 build:
+  number: 1
   noarch: python
-  number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python
+  host:
+    - numpy
     - pip
-    - numpy
     - pytest-runner
+    - python >=3.6
   run:
-    - python
-    - numpy
-    - qutip
-    - pyquil
-    - networkx
-    - scipy
     - funcsigs
+    - matplotlib-base
+    - mock
+    - networkx
+    - numpy
+    - pyquil >=1.6.1
+    - python >=3.6
+    - scipy
 
 test:
   imports:
     - grove
+    - grove.alpha
     - grove.amplification
     - grove.bernstein_vazirani
     - grove.deutsch_jozsa
@@ -45,12 +46,18 @@ test:
     - grove.simon
     - grove.utils
     - grove.tomography
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/rigetticomputing/grove
   license: Apache-2.0
   license_family: Apache
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
+  license_file:
+    - LICENSE
+    - NOTICE
   summary: 'A collection of quantum algorithms built using pyQuil and Forest'
 
   description: |
@@ -61,3 +68,4 @@ about:
 extra:
   recipe-maintainers:
     - ntezak
+    - BastianZim
