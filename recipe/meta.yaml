@@ -1,7 +1,6 @@
 {% set name = "quantum-grove" %}
 {% set version = "1.7.0" %}
 {% set build_num = 2 %}
-{% set old_name = "grove" %}
 
 
 package:
@@ -57,7 +56,7 @@ outputs:
         - pip
 
 
-  - name: {{ old_name }}
+  - name: grove
     build:
       noarch: generic
       string: {{ build_num }}_metapackage
@@ -66,7 +65,7 @@ outputs:
         - {{ name }} {{ version }}
     test:
       imports:
-        - {{ name }}
+        - grove
 
 
 about:
