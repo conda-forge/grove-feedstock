@@ -86,4 +86,4 @@ extra:
   recipe-maintainers:
     - ntezak
     - BastianZim
-  feedstock-name: {{ old_name }}
+  feedstock-name: grove
