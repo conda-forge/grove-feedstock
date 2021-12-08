@@ -1,5 +1,4 @@
-{% set name = "grove" %}
-{% set pip_name = "quantum-grove" %}
+{% set name = "quantum-grove" %}
 {% set version = "1.7.0" %}
 
 
@@ -8,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ pip_name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/quantum-grove-{{ version }}.tar.gz
   sha256: a563efa7471abb932a1e9e4ab9f01aaa2b3136cda5854e0be3af35f334b88d7e
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -58,7 +57,7 @@ about:
   license_file:
     - LICENSE
     - NOTICE
-  summary: 'A collection of quantum algorithms built using pyQuil and Forest'
+  summary: A collection of quantum algorithms built using pyQuil and Forest
 
   description: |
     A collection of quantum algorithms built using pyQuil and Forest.
