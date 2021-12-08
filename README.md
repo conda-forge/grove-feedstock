@@ -7,13 +7,13 @@ Package license: Apache-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/grove-feedstock/blob/master/LICENSE.txt)
 
-Summary: A collection of quantum algorithms built using pyQuil and Forest
+Summary: Quantum algorithms built using pyQuil
 
 Development: https://github.com/rigetticomputing/grove
 
 Documentation: http://grove-docs.readthedocs.io/en/latest/
 
-A collection of quantum algorithms built using pyQuil and Forest.
+A collection of quantum algorithms built using the Rigetti Forest platform.
 
 
 Current build status
@@ -35,6 +35,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-grove-green.svg)](https://anaconda.org/conda-forge/grove) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/grove.svg)](https://anaconda.org/conda-forge/grove) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/grove.svg)](https://anaconda.org/conda-forge/grove) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/grove.svg)](https://anaconda.org/conda-forge/grove) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-quantum--grove-green.svg)](https://anaconda.org/conda-forge/quantum-grove) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/quantum-grove.svg)](https://anaconda.org/conda-forge/quantum-grove) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/quantum-grove.svg)](https://anaconda.org/conda-forge/quantum-grove) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/quantum-grove.svg)](https://anaconda.org/conda-forge/quantum-grove) |
 
 Installing grove
 ================
@@ -46,10 +47,10 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `grove` can be installed with:
+Once the `conda-forge` channel has been enabled, `grove, quantum-grove` can be installed with:
 
 ```
-conda install grove
+conda install grove quantum-grove
 ```
 
 It is possible to list all of the versions of `grove` available on your platform with:

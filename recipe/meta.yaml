@@ -1,55 +1,72 @@
-{% set name = "grove" %}
-{% set pip_name = "quantum-grove" %}
+{% set name = "quantum-grove" %}
 {% set version = "1.7.0" %}
+{% set build_num = 2 %}
 
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}-meta
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ pip_name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/quantum-grove-{{ version }}.tar.gz
   sha256: a563efa7471abb932a1e9e4ab9f01aaa2b3136cda5854e0be3af35f334b88d7e
 
 build:
-  number: 1
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  number: {{ build_num }}
 
-requirements:
-  host:
-    - numpy
-    - pip
-    - pytest-runner
-    - python >=3.6
-  run:
-    - funcsigs
-    - matplotlib-base
-    - mock
-    - networkx
-    - numpy
-    - pyquil >=1.6.1
-    - python >=3.6
-    - scipy
+outputs:
+  - name: {{ name }}
+    build:
+        noarch: python
+    script: build_base.sh
 
-test:
-  imports:
-    - grove
-    - grove.alpha
-    - grove.amplification
-    - grove.bernstein_vazirani
-    - grove.deutsch_jozsa
-    - grove.ising
-    - grove.pyqaoa
-    - grove.pyvqe
-    - grove.qft
-    - grove.simon
-    - grove.utils
-    - grove.tomography
-  commands:
-    - pip check
-  requires:
-    - pip
+    requirements:
+      host:
+        - numpy
+        - pip
+        - pytest-runner
+        - python >=3.6
+      run:
+        - funcsigs
+        - matplotlib-base
+        - mock
+        - networkx
+        - numpy
+        - pyquil >=1.6.1
+        - python >=3.6
+        - scipy
+
+    test:
+      imports:
+        - grove
+        - grove.alpha
+        - grove.amplification
+        - grove.bernstein_vazirani
+        - grove.deutsch_jozsa
+        - grove.ising
+        - grove.pyqaoa
+        - grove.pyvqe
+        - grove.qft
+        - grove.simon
+        - grove.utils
+        - grove.tomography
+      commands:
+        - pip check
+      requires:
+        - pip
+
+
+  - name: grove
+    build:
+      noarch: generic
+      string: {{ build_num }}_metapackage
+    requirements:
+      run:
+        - {{ name }} {{ version }}
+    test:
+      imports:
+        - grove
+
 
 about:
   home: https://github.com/rigetticomputing/grove
@@ -58,10 +75,10 @@ about:
   license_file:
     - LICENSE
     - NOTICE
-  summary: 'A collection of quantum algorithms built using pyQuil and Forest'
+  summary: Quantum algorithms built using pyQuil
 
   description: |
-    A collection of quantum algorithms built using pyQuil and Forest.
+    A collection of quantum algorithms built using the Rigetti Forest platform.
   doc_url: http://grove-docs.readthedocs.io/en/latest/
   dev_url: https://github.com/rigetticomputing/grove
 
@@ -69,3 +86,4 @@ extra:
   recipe-maintainers:
     - ntezak
     - BastianZim
+  feedstock-name: grove
