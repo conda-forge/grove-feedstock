@@ -26,6 +26,7 @@ outputs:
         - pip
         - pytest-runner
         - python {{ python_min }}
+        - setuptools
       run:
         - funcsigs
         - matplotlib-base
