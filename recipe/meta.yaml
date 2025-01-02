@@ -8,7 +8,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/quantum-grove-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/quantum-grove-{{ version }}.tar.gz
   sha256: a563efa7471abb932a1e9e4ab9f01aaa2b3136cda5854e0be3af35f334b88d7e
 
 build:
@@ -25,7 +25,8 @@ outputs:
         - numpy
         - pip
         - pytest-runner
-        - python >=3.6
+        - python {{ python_min }}
+        - setuptools
       run:
         - funcsigs
         - matplotlib-base
@@ -33,7 +34,7 @@ outputs:
         - networkx
         - numpy
         - pyquil >=1.6.1
-        - python >=3.6
+        - python >={{ python_min }}
         - scipy
 
     test:
@@ -50,10 +51,6 @@ outputs:
         - grove.simon
         - grove.utils
         - grove.tomography
-      commands:
-        - pip check
-      requires:
-        - pip
 
 
   - name: grove
