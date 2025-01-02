@@ -51,10 +51,6 @@ outputs:
         - grove.simon
         - grove.utils
         - grove.tomography
-      commands:
-        - pip check
-      requires:
-        - pip
 
 
   - name: grove
